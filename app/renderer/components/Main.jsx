@@ -5,17 +5,31 @@ import Header from './Header';
 import Editor from './Editor';
 import Sidebar from './Sidebar';
 import Terminal from './Terminal';
-
-const editorContext = React.createContext();
+import {editorContext,textFile} from './EditorContext';
 
 
 export default class Main extends Component {
+    constructor(props){
+        super(props);
+    this.toggleFile = () => {
+        this.setState(state => ({
+            textFile :
+                state.textFile === textFile.FileTwo
+                ? textFile.fileOne
+                : textFile.FileTwo,
+        }));
+    };
+    this.state = {
+        textFile: textFile.FileTwo,
+        toggleFile: this.toggleTheme,
+      };
+}
     render() {
         return (
             <div className="container">
                 <Header />
                 <div className="sub-container">
-                <editorContext.Provider value={42}>
+                <editorContext.Provider value={this.state.textFile}>
                     <Sidebar />
                     <div className="deep-container">
                         <Editor />

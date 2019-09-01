@@ -1,7 +1,18 @@
-import React  from 'react';
+import React from 'react';
 
-const currentViewInEditor = "testtesttest";
+export const textFile = {
+    fileOne: {
+      text: 'test1',
+      background: '#eeeeee',
+    },
+    FileTwo: {
+      text: 'test2',
+      background: '#222222',
+    },
+  };
 
-export const editorText = React.createContext(
-    currentViewInEditor
-)
+export const editorContext = React.createContext(
+    textFile.fileOne);
+    //toggleTheme: () => {},
+    //} // default value
+  //);
